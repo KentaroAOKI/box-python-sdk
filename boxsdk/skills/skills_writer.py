@@ -14,12 +14,12 @@ class SkillsWriter:
     any file for which a Skills Event is sent out.
 
     API:-
-    SkillsWriter.create_topics_card ( topicsDataList, optionalFileDuration, optionalCardTitle ) : DataCard json
-    SkillsWriter.createTranscriptsCard ( transcriptsDataList, optionalFileDuration, optionalCardTitle ): DataCard json
-    SkillsWriter.createFacesCard ( facesDataList, optionalFileDuration, optionalCardTitle ) : DataCard json
-    SkillsWriter.save_processing_card ( optionalCallback ) : null
-    SkillsWriter.save_error_card ( error, optionalCustomMessage, optionalCallback ): null
-    SkillsWriter.save_data_cards ( listofDataCardJSONs, optionalCallback): null
+    SkillsWriter.create_topics_card ( topics_data_list, optional_file_duration, optional_card_title ) : DataCard json
+    SkillsWriter.create_transcripts_card ( transcripts_data_list, optional_file_duration, optional_card_title ): DataCard json
+    SkillsWriter.create_faces_card ( faces_data_list, optional_file_duration, optional_card_title ) : DataCard json
+    SkillsWriter.save_processing_card ( optional_callback ) : null
+    SkillsWriter.save_error_card ( error, optional_custom_message, optional_callback ): null
+    SkillsWriter.save_data_cards ( list_of_data_card_jsons, optional_callback): null
     """
 
     # Constant values for writing cards to skill_invocations service
