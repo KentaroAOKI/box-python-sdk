@@ -12,6 +12,8 @@ class SkillsWriter:
     SkillsWriter :- A helpful class to write back Metadata Cards for
     Topics, Transcripts, Timelines, Errors and Statuses back to Box for
     any file for which a Skills Event is sent out.
+    This module was converted to Python code by referring to the box skills kit nodejs.
+    https://github.com/box/box-skills-kit-nodejs
 
     API:-
     SkillsWriter.create_topics_card ( topics_data_list, optional_file_duration, optional_card_title ) : DataCard json
