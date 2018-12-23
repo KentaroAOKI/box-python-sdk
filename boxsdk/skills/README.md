@@ -1,33 +1,43 @@
-This module was converted to Python code by referring to the box skills kit nodejs.
+It is a helper tool with reference to box skills. It is not official.
 https://github.com/box/box-skills-kit-nodejs
 
 ```python
+from boxsdk.skills import FileReader
 from boxsdk.skills import SkillsWriter
 from boxsdk.skills import SkillsErrorEnum
 
 json_req = { ... }
 
 # Interpret the event from Box
-skillswriter = SkillsWriter(json_req)
+file_reader = FileReader(json_req)
+skills_writer = SkillsWriter(json_req)
 
 # Save a status update back to Box
-skillswriter.saveProcessingCard()
+skills_writer.saveProcessingCard()
 
-# Write metadata back to Box
-topi_card_json = skillswriter.create_topics_card([{ 'text': 'Hello' }, { 'text': 'File' }])
-transcripts_card_json = skillswriter.create_transcripts_card([{ 'text': 'Hello file', 'appears': [{ 'start': 0, 'end': 1 }] }], 1)
-face_card_json = skillswriter.create_faces_card(
-    [
-        {
-            'text': "if image doesn't load this text is shown",
-            'image_url': 'https://seeklogo.com/images/B/box-logo-646A3D8C91-seeklogo.com.png'
-        }
-    ],
-    None,
-    'Logos'
-)
-skillswriter.save_data_cards([topi_card_json, transcripts_card_json, face_card_json])
+# Download file from Box
+with open(filereader.file_name, 'wb') as f:
+    filereader.download_to(f)
 
-# Using status cards to display errors
-skillswriter.save_error_card(SkillsErrorEnum.INVALID_FILE_FORMAT)
+# Execute iference processing.
+result_is_not_error = True
+
+if result_is_not_error:
+    # Write metadata back to Box
+    topi_card_json = skills_writer.create_topics_card([{ 'text': 'Hello' }, { 'text': 'File' }])
+    transcripts_card_json = skills_writer.create_transcripts_card([{ 'text': 'Hello file', 'appears': [{ 'start': 0, 'end': 1 }] }], 1)
+    face_card_json = skills_writer.create_faces_card(
+        [
+            {
+                'text': "if image doesn't load this text is shown",
+                'image_url': 'https://seeklogo.com/images/B/box-logo-646A3D8C91-seeklogo.com.png'
+            }
+        ],
+        None,
+        'Logos'
+    )
+    skills_writer.save_data_cards([topi_card_json, transcripts_card_json, face_card_json])
+else:
+    # Using status cards to display errors
+    skills_writer.save_error_card(SkillsErrorEnum.INVALID_FILE_FORMAT)
 ```

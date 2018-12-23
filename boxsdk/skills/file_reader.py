@@ -61,7 +61,7 @@ class FileReader:
     )
 
     def __get_file_format(self, file_name):
-        file_extension = os.path.splitext(file_name.lower())
+        file_extension = os.path.splitext(file_name.lower())[1].replace('.', '')
         return file_extension
  
     def __get_file_type(self, file_format):
